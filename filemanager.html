@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <title>Essential JS 2 File Manager Component</title>
+        <!-- File Manager and its dependent theme -->
+   <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+   <script src="./ej2.min.js"></script>
+  
+   </head>
+   <body>
+        <!-- Add the HTML <div> element  -->
+        <h4>Placeholder property is set as "Search More Files"</h4>
+        <div id="filemanager"></div>
+        <br/>
+        <h4>Placeholder property is set as Empty string ("")</h4>
+        <div id="filemanager1"></div>
+        <br/>
+        <h4>Without placeholder property</h4>
+        <div id="filemanager2"></div>
+        <br/>
+        <script>
+          var hostUrl = 'https://ej2-aspcore-service.azurewebsites.net/';
+          // initialize File Manager component
+          var filemanagerInstance = new ej.filemanager.FileManager({
+              ajaxSettings: {
+                  url: hostUrl + 'api/FileManager/FileOperations'
+              },
+              searchSettings:  { placeholder: "Search More Files"}
+          });
+          // render initialized File Manager
+          filemanagerInstance.appendTo('#filemanager');
+
+          var filemanagerInstance1 = new ej.filemanager.FileManager({
+              ajaxSettings: {
+                  url: hostUrl + 'api/FileManager/FileOperations'
+              },
+              searchSettings:  { placeholder: ""}
+          });
+          // render initialized File Manager
+          filemanagerInstance1.appendTo('#filemanager1');
+          var filemanagerInstance2 = new ej.filemanager.FileManager({
+              ajaxSettings: {
+                  url: hostUrl + 'api/FileManager/FileOperations'
+              },
+          });
+          // render initialized File Manager
+          filemanagerInstance2.appendTo('#filemanager2');
+        </script>
+   </body>
+  </html>
